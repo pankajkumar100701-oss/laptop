@@ -2,6 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { HamburgerMenu } from "../components/HamburgerMenu";
+
+const navItems = [
+  { label: 'Intro', href: '#intro' },
+  { label: 'Features', href: '#features' },
+  { label: 'Interactive', href: '#demo' },
+];
 
 const ImagePlaceholder = ({ className }: { className?: string }) => (
   <div className={`bg-[#fdfbf7] border-4 border-[#d4a373] rounded-3xl flex items-center justify-center text-[#d4a373] shadow-2xl relative overflow-hidden ${className}`}>
@@ -73,18 +80,23 @@ export default function Home() {
             <div className="w-10 h-10 rounded-2xl bg-[#d4a373] animate-spin-slow flex items-center justify-center font-bold text-lg text-white shadow-lg">G</div>
             <span className="font-bold text-xl md:text-2xl tracking-tight">Gemini<span className="text-[#d4a373]">Explorer</span></span>
           </div>
-          <div className="flex gap-4 md:gap-8 font-medium text-xs md:text-sm uppercase tracking-widest text-[#7a6d60]">
-            {['Intro', 'Features', 'Interactive'].map((item) => (
+          
+          {/* Desktop Nav */}
+          <div className="hidden md:flex gap-8 font-medium text-sm uppercase tracking-widest text-[#7a6d60]">
+            {navItems.map((item) => (
               <a
-                key={item}
-                href={`#${item.toLowerCase() === 'interactive' ? 'demo' : item.toLowerCase()}`}
+                key={item.label}
+                href={item.href}
                 className="group relative hover:text-[#d4a373] transition"
               >
-                {item}
+                {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d4a373] transition-all duration-300 group-hover:w-full" />
               </a>
             ))}
           </div>
+
+          {/* Mobile Nav */}
+          <HamburgerMenu items={navItems} />
         </div>
       </nav>
       
