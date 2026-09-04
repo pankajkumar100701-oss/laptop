@@ -149,9 +149,6 @@ export const HamburgerMenu = ({ items }: HamburgerMenuProps) => {
 
                 {/* Primary Navigation Links */}
                 <div>
-                  <h3 className="text-[10px] font-bold text-[#7a6d60] uppercase tracking-wider px-3 mb-3">
-                    Navigation Menu
-                  </h3>
                   <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -168,16 +165,9 @@ export const HamburgerMenu = ({ items }: HamburgerMenuProps) => {
                           <span className="text-xl shrink-0 group-hover:scale-110 transition-transform">
                             {item.icon || "✨"}
                           </span>
-                          <div className="flex flex-col">
-                            <span className="font-semibold text-sm leading-tight">
-                              {item.label}
-                            </span>
-                            {item.description && (
-                              <span className="text-[11px] text-[#7a6d60] group-hover:text-[#d4a373]/80 transition-colors">
-                                {item.description}
-                              </span>
-                            )}
-                          </div>
+                          <span className="font-semibold text-sm">
+                            {item.label}
+                          </span>
                         </a>
                       </motion.div>
                     ))}
@@ -186,31 +176,29 @@ export const HamburgerMenu = ({ items }: HamburgerMenuProps) => {
               </div>
 
               {/* Drawer Footer Status Area */}
-              <div className="p-5 border-t border-[#eaddcf]/40 bg-[#fbf9f4] flex flex-col gap-4">
-                {/* User Info Block */}
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-[#eaddcf] flex items-center justify-center text-sm font-bold text-[#4a4035] border border-white shadow-inner">
-                    PK
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-bold text-xs text-[#4a4035]">Pankaj Kumar</span>
-                    <span className="text-[10px] text-emerald-600 font-medium flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Pro Account Connected
-                    </span>
-                  </div>
-                </div>
+              <div className="p-5 border-t border-[#eaddcf]/40 bg-[#fbf9f4] flex flex-col gap-6">
+                {/* Download App CTA */}
+                <button
+                  className="w-full py-3.5 bg-[#1a1f2e] text-white rounded-2xl font-bold hover:bg-[#2d344a] transition-all duration-300 shadow-md"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Download App
+                </button>
 
-                {/* Bottom Stats / Metadata */}
-                <div className="flex items-center justify-between text-[10px] text-[#7a6d60]">
-                  <span>v1.2.0-beta</span>
-                  <a 
-                    href="#demo"
-                    onClick={() => setIsOpen(false)}
-                    className="hover:underline font-semibold text-[#d4a373]"
-                  >
-                    All API Systems OK
-                  </a>
+                {/* Socials & Legal */}
+                <div className="flex flex-col gap-4">
+                  {/* Social Icons */}
+                  <div className="flex justify-center gap-6 text-[12px] font-semibold text-[#7a6d60]">
+                    <span className="hover:text-[#d4a373] cursor-pointer transition">Twitter</span>
+                    <span className="hover:text-[#d4a373] cursor-pointer transition">Instagram</span>
+                    <span className="hover:text-[#d4a373] cursor-pointer transition">LinkedIn</span>
+                  </div>
+                  {/* Legal Links */}
+                  <div className="flex justify-center gap-4 text-[10px] text-[#7a6d60]">
+                    <a href="#" className="hover:underline hover:text-[#d4a373] transition">Privacy Policy</a>
+                    <span className="text-[#eaddcf]">|</span>
+                    <a href="#" className="hover:underline hover:text-[#d4a373] transition">Terms of Service</a>
+                  </div>
                 </div>
               </div>
             </motion.div>
