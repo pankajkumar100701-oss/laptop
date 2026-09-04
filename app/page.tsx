@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HamburgerMenu } from "../components/HamburgerMenu";
 
 const navItems = [
-  { label: 'Intro', href: '#intro', icon: '✨', description: 'What is Gemini?' },
-  { label: 'Features', href: '#features', icon: '🚀', description: 'Key capabilities' },
-  { label: 'Models', href: '#models', icon: '🧠', description: 'Explore & compare models' },
-  { label: 'Interactive', href: '#demo', icon: '⚡', description: 'Live prompting sandbox' },
-  { label: 'Pricing', href: '#pricing', icon: '💎', description: 'Affordable billing plans' },
-  { label: 'FAQ', href: '#faq', icon: '❓', description: 'Frequently asked questions' },
+  { label: 'How it Works', href: '#how-it-works', icon: '⚙️' },
+  { label: 'FAQ', href: '#faq', icon: '❓' },
+  { label: 'Who is it for?', href: '#target', icon: '👥' },
+  { label: 'Founder Letter', href: '#founder', icon: '✉️' },
+  { label: 'Pricing', href: '#pricing', icon: '💎' },
+  { label: 'Blog', href: '#blog', icon: '📝' },
 ];
 
 const ImagePlaceholder = ({ className }: { className?: string }) => (
