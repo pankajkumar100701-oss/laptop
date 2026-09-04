@@ -67,26 +67,33 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Nav */}
-      <nav className="sticky top-0 bg-[#fdfbf7]/90 backdrop-blur-lg border-b border-[#eaddcf] z-50">
+      <nav className="fixed top-0 left-0 w-full bg-[#fdfbf7]/80 backdrop-blur-md border-b border-[#eaddcf]/50 z-50">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-[#d4a373] animate-spin-slow flex items-center justify-center font-bold text-lg text-white shadow-lg">G</div>
-            <span className="font-bold text-2xl tracking-tight">Gemini<span className="text-[#d4a373]">Explorer</span></span>
+            <span className="font-bold text-xl md:text-2xl tracking-tight">Gemini<span className="text-[#d4a373]">Explorer</span></span>
           </div>
-          <div className="flex gap-8 font-medium text-sm uppercase tracking-widest text-[#7a6d60]">
-            <a href="#intro" className="hover:text-[#d4a373] transition">Intro</a>
-            <a href="#features" className="hover:text-[#d4a373] transition">Features</a>
-            <a href="#demo" className="hover:text-[#d4a373] transition">Interactive</a>
+          <div className="flex gap-4 md:gap-8 font-medium text-xs md:text-sm uppercase tracking-widest text-[#7a6d60]">
+            {['Intro', 'Features', 'Interactive'].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase() === 'interactive' ? 'demo' : item.toLowerCase()}`}
+                className="group relative hover:text-[#d4a373] transition"
+              >
+                {item}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d4a373] transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
           </div>
         </div>
       </nav>
       
       {/* Hero */}
-      <header className="hero-gradient py-24 px-6 text-center">
+      <header className="hero-gradient pt-24 pb-16 md:pt-32 md:py-24 px-6 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-6xl md:text-7xl font-extrabold mb-6 tracking-tighter"
+          className="text-4xl md:text-7xl font-extrabold mb-6 tracking-tighter"
         >
           Master the Art of <span className="text-[#d4a373]">Gemini</span>.
         </motion.h1>
@@ -94,7 +101,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-xl md:text-2xl text-[#7a6d60] max-w-2xl mx-auto leading-relaxed"
+          className="text-lg md:text-2xl text-[#7a6d60] max-w-2xl mx-auto leading-relaxed"
         >
           Unlock the full potential of multimodal AI with precise prompting, advanced reasoning, and seamless integration.
         </motion.p>
@@ -108,11 +115,11 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           id="intro" 
-          className="grid md:grid-cols-2 gap-12 items-center"
+          className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
         >
           <div>
-            <h2 className="text-4xl font-bold mb-6">What is Gemini?</h2>
-            <p className="text-lg text-[#7a6d60] leading-relaxed">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">What is Gemini?</h2>
+            <p className="text-base md:text-lg text-[#7a6d60] leading-relaxed">
               Gemini is Google&apos;s most capable AI model, built from the ground up to be multimodal. It understands text, code, audio, images, and video with unprecedented precision.
             </p>
           </div>
@@ -126,17 +133,17 @@ export default function Home() {
           viewport={{ once: true }}
           id="features"
         >
-          <h2 className="text-4xl font-bold mb-12 text-center">Key Features</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center">Key Features</h2>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
             {['Multimodal Power', 'Advanced Reasoning', 'Global Scaling'].map((f, i) => (
               <motion.div 
                 key={i}
                 whileHover={{ scale: 1.05, rotateY: 5 }}
-                className="p-8 bg-white rounded-3xl border border-[#eaddcf] shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="p-6 md:p-8 bg-white rounded-3xl border border-[#eaddcf] shadow-lg hover:shadow-2xl transition-all duration-300"
               >
                 <div className="w-12 h-12 bg-[#fdfbf7] rounded-xl flex items-center justify-center mb-6 text-2xl">✨</div>
-                <h3 className="text-xl font-bold mb-3">{f}</h3>
-                <p className="text-[#7a6d60]">High-level capabilities enabling complex tasks and creative workflows.</p>
+                <h3 className="text-lg md:text-xl font-bold mb-3">{f}</h3>
+                <p className="text-sm md:text-base text-[#7a6d60]">High-level capabilities enabling complex tasks and creative workflows.</p>
               </motion.div>
             ))}
           </div>
@@ -152,26 +159,26 @@ export default function Home() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             id="demo" 
-            className="bg-white p-12 rounded-3xl shadow-xl border border-[#eaddcf]"
+            className="bg-white p-6 md:p-12 rounded-3xl shadow-xl border border-[#eaddcf]"
           >
-            <h2 className="text-4xl font-bold mb-8 text-[#d4a373]">Playable Session</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#d4a373]">Playable Session</h2>
             <div className="space-y-6">
               <input
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask me something..."
-                className="w-full p-6 border-2 border-[#eaddcf] rounded-2xl bg-[#fdfbf7] text-[#4a4035] focus:border-[#d4a373] outline-none text-lg"
+                className="w-full p-4 md:p-6 border-2 border-[#eaddcf] rounded-2xl bg-[#fdfbf7] text-[#4a4035] focus:border-[#d4a373] outline-none text-base md:text-lg"
               />
               <button
                 onClick={handlePrompt}
-                className="px-8 py-4 bg-[#d4a373] text-white rounded-2xl font-bold hover:bg-[#c49363] transition shadow-lg"
+                className="w-full md:w-auto px-8 py-4 bg-[#d4a373] text-white rounded-2xl font-bold hover:bg-[#c49363] transition shadow-lg"
               >
                 Analyze Prompt
               </button>
               {response && (
-                <div className="p-8 mt-6 bg-[#fdfbf7] rounded-2xl border border-[#eaddcf] flex justify-between items-start gap-4">
-                  <p className="text-lg text-[#4a4035]">{response}</p>
+                <div className="p-6 md:p-8 mt-6 bg-[#fdfbf7] rounded-2xl border border-[#eaddcf] flex flex-col md:flex-row justify-between items-start gap-4">
+                  <p className="text-base md:text-lg text-[#4a4035]">{response}</p>
                   <button onClick={copyToClipboard} className="shrink-0 text-[#d4a373] hover:underline font-bold text-sm uppercase tracking-widest">Copy</button>
                 </div>
               )}
